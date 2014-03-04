@@ -11,3 +11,10 @@
 *.lai
 *.la
 *.a
+
+*.log
+*.obj
+*.tlog
+*.pdb
+
+*/Debug/*.tlog
