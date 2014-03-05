@@ -36,28 +36,28 @@ int _tmain(int argc, _TCHAR* argv[])
                               TEXT("pdf"),     // temp file name prefix 
                               0,                // create unique name 
                               v3.data());  // buffer for name 
-	wstring strTmp;
+	string strTmp;
 	strTmp.assign(v3.begin(),v3.end());
-	pos = strTmp.find_last_of(L".");
-	strTmp.replace(pos,strTmp.size()-pos,L".pdf");
+	pos = strTmp.find_last_of(".");
+	strTmp.replace(pos,strTmp.size()-pos,".pdf");
 
 	//strTmp.assign(strPathName.begin(),strPathName.end());
 	//strTmp += L"temp.pdf";
 
-	wstring strCmd;
-	strCmd.append(L"\"");
+	string strCmd;
+	strCmd.append("\"");
 	strCmd.append(strPathName.begin(),strPathName.end());
-	strCmd.append(L"pyVM.exe\" -c \"from uniconvertor import uniconv_run; uniconv_run();\" \"");
+	strCmd.append("pyVM.exe\" -c \"from uniconvertor import uniconv_run; uniconv_run();\" \"");
 	strCmd.append(argv[1]);
-	strCmd.append(L"\" \"");
+	strCmd.append("\" \"");
 	strCmd.append(strTmp);
-	strCmd.append(L"\"");
+	strCmd.append("\"");
 
 	string strCCmd(strCmd.begin(),strCmd.end());
 
-	wstring strName(L"PATH");
-	wstring strValue(strPathName.begin(),strPathName.end());
-	strValue.append(L"DLLs");
+	string strName("PATH");
+	string strValue(strPathName.begin(),strPathName.end());
+	strValue.append("DLLs");
 	SetEnvironmentVariable(strName.c_str(),strValue.c_str());
 
 	if (WinExec(strCCmd.c_str(),SW_HIDE)) {
@@ -66,7 +66,7 @@ int _tmain(int argc, _TCHAR* argv[])
 			if(PathFileExists(strTmp.c_str())) break;
 		}
 		
-		HINSTANCE hNewExe = ShellExecute(NULL,L"open",strTmp.c_str(),NULL,NULL,SW_SHOW);
+		HINSTANCE hNewExe = ShellExecute(NULL,"open",strTmp.c_str(),NULL,NULL,SW_SHOW);
 		if ((int)hNewExe < 32) {
 			wcout << L"Open " << strTmp.c_str() << L" Error Code:" << hNewExe << endl;
 		}

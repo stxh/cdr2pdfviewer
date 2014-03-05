@@ -12,9 +12,17 @@
 *.la
 *.a
 
+# vc++
 *.log
 *.obj
 *.tlog
 *.pdb
+*.sdf
+*.apf
+*.suo
 
-*/Debug/*.tlog
+Debug/*
+Release/*
+ipch/*
+cdr2pdfviewer/Debug/*
+cdr2pdfviewer/Release/*
